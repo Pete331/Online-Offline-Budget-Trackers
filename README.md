@@ -1,6 +1,7 @@
 # Offline Budget Tracker
 This application allows the user to add expenses and deposits to their budget with or without an internet connection. When entering transactions offline, the application populates the total when brought back online. The Data is stored using MongoDB with models being created with mongoose.  
-This is done by using service workers to store appropriate files to in cache storage for offline usage. The App also can be installed on the device as it covers off on the requiremetns to do so.  
+This is done by using service workers to store appropriate files to in cache storage for offline usage. The App also can be installed on the device as it covers off on the requiremetns to do so. The below image shows the lighthouse run rseults from before and after optimisation, It shows that the app is installable.
+![Combined Picture](https://raw.githubusercontent.com/Pete331/Online-Offline-Budget-Trackers/master/screenshots/combined.png "Created by Pete331")  
 ![GitHub last commit](https://img.shields.io/github/last-commit/Pete331/Online-Offline-Budget-Trackers)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Pete331/Online-Offline-Budget-Trackers)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Pete331/Online-Offline-Budget-Trackers)
@@ -19,7 +20,7 @@ If looking to run server on a local host
 - Install dependencies with ‘npm i’ on your terminal in the repo’s directory
 - Make sure MongoDB is installed and running
 - Run ‘npm start’ on your terminal in the repo’s directory to begin local server
-- Access from http://localhost:4000/
+- Access from http://localhost:5000/
 ## Usage
 You may use this to track your budget.
 ## License
