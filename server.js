@@ -15,6 +15,18 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+app.use((req, res, next) => {
+  if (process.env.NODE_ENV === 'production') {
+      if (req.headers.host === 'budget-tracker331.herokuapp.com/')
+          return res.redirect(301, 'https://budget-tracker331.herokuapp.com/');
+      if (req.headers['x-forwarded-proto'] !== 'https')
+          return res.redirect('https://' + req.headers.host + req.url);
+      else
+          return next();
+  } else
+      return next();
+});
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
   useNewUrlParser: true,
   useFindAndModify: false,
