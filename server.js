@@ -15,7 +15,7 @@ app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// tried using sslify but still deosnt seem to work properly in lighthouse tests????
+// NOTE: COMMENT OUT TO RUN LOCALHOST this has to be called before the static middleware call - note that localhost doesnt work with this activated
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.use(express.static("public"));
@@ -24,8 +24,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
   useNewUrlParser: true,
   useFindAndModify: false,
 });
-
-
 
 // routes
 app.use(require("./routes/api.js"));
