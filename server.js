@@ -5,7 +5,7 @@ const compression = require("compression");
 var http = require('http');
 var enforce = require('express-sslify');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 7000;
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // NOTE: COMMENT OUT TO RUN LOCALHOST this has to be called before the static middleware call - note that localhost doesnt work with this activated
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
+// app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.use(express.static("public"));
 
