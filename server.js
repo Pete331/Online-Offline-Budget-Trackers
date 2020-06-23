@@ -15,6 +15,9 @@ app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// tried using sslify but still deosnt seem to work properly in lighthouse tests????
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
+
 app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
@@ -22,10 +25,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
   useFindAndModify: false,
 });
 
-// routes
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
-app.use(require("./routes/api.js"));
 
+
+// routes
+app.use(require("./routes/api.js"));
  
 http.createServer(app).listen(PORT, function() {
     console.log('Express server listening on port ' + PORT);
