@@ -2,6 +2,8 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
+var http = require('http');
+var enforce = require('express-sslify');
 
 const PORT = process.env.PORT || 4000;
 
@@ -21,8 +23,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
 });
 
 // routes
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(require("./routes/api.js"));
 
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
+ 
+http.createServer(app).listen(PORT, function() {
+    console.log('Express server listening on port ' + PORT);
 });
